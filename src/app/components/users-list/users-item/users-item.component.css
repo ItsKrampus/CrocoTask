@@ -1,3 +1,7 @@
+:host {
+  display: contents;
+}
+
 .user-info {
   margin: 8px 0;
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -55,4 +59,42 @@
   -moz-column-gap: 1rem;
   column-gap: 1rem;
   flex-shrink: 0;
+}
+
+
+
+
+tr:hover {
+  /* background-color: #f5f5f5; */
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+table-container {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  /* background-color: white; */
+}
+
+
+th, td {
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow:hidden;
+  padding: 12px;
+  text-align: left;
+  /* border-bottom: 1px solid #ddd; */
 }

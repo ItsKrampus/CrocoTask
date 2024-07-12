@@ -1,10 +1,14 @@
-<div class="main-container">
-  <header class="header">
-    <h1>Our Users</h1>
-  </header>
-  <div class="user-container">
-    @for (user of users; track user.id) {
-    <app-users-item [usersData]="user"></app-users-item>
-    }
-  </div>
-</div>
+
+<table>
+  <tr>
+  <th>Name</th>
+  <th>Surname</th>
+  <th>Phone</th>
+  <th>Email</th>
+  <th>Company</th>
+  <th>  </th>
+  </tr>
+  @for (user of users; track user.id ; ) {
+      <app-users-item [usersData]="user"></app-users-item>
+  }
+</table>

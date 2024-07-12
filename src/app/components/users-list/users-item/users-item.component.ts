@@ -5,7 +5,7 @@ import {Component, Input} from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './users-item.component.html',
-  styleUrl: './users-item.component.css'
+  styleUrl: './users-item.component.css',
 })
 export class UsersItemComponent {
   @Input() usersData: any;

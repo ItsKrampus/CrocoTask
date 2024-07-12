@@ -1,24 +1,99 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {UsersServiceService} from "../../services/users-service.service";
-import {map} from "rxjs";
-import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
-import {UsersItemComponent} from "./users-item/users-item.component";
+import { Component, inject, OnInit } from '@angular/core';
+import { UsersServiceService } from '../../services/users-service.service';
+import { map } from 'rxjs';
+import { log } from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
+import { UsersItemComponent } from './users-item/users-item.component';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [
-    UsersItemComponent
-  ],
+  imports: [UsersItemComponent],
   templateUrl: './users-list.component.html',
-  styleUrl: './users-list.component.css'
+  styleUrl: './users-list.component.css',
 })
-export class UsersListComponent implements OnInit{
-  public users: any;
+export class UsersListComponent implements OnInit {
+  public users?: UserDto[];
+  // refine data so that it matches the users dto
+  handleApiResponse(data: UserApi[]) {
+    const redfinedData = [];
+    // iterate over the data
+    for (let user of data) {
+      // we get user.name and split it
+      let fullname = user.name.split(' ');
+      // assing the user data accordingly to dto
+      const userDto: UserDto = {
+        id:user.id,
+        firstName: fullname[0],
+        lastName: fullname[1],
+        phoneNumber: user.phone,
+        companyName: user.company.name,
+        email: user.email,
+      };
+      redfinedData.push(userDto);
+    }
+    return redfinedData;
+  }
   ngOnInit(): void {
-    this.usersService.getUsers().subscribe(data => {
-      this.users = data
+    this.usersService.getUsers().subscribe({
+      next: (data:any) => {
+        this.users = this.handleApiResponse(data); // Assign refined data to users
+        console.log('Users:', this.users); // Optionally log the users data
+      },
+      error: (error) => console.error('Error fetching users:', error)
     });
   }
-  private usersService = inject(UsersServiceService)
+
+
+  private usersService = inject(UsersServiceService);
 }
+
+interface Company {
+  name: string;
+  [key: string]: any;
+}
+
+interface UserApi {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address?: any;
+  phone: string;
+  website: string;
+  company: Company;
+}
+
+export interface UserDto {
+  id:number;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  companyName: string;
+  email: string;
+}
+
+// [
+//   {
+//     "id": 1,
+//     "name": "Leanne Graham",
+//     "username": "Bret",
+//     "email": "Sincere@april.biz",
+//     "address": {
+//       "street": "Kulas Light",
+//       "suite": "Apt. 556",
+//       "city": "Gwenborough",
+//       "zipcode": "92998-3874",
+//       "geo": {
+//         "lat": "-37.3159",
+//         "lng": "81.1496"
+//       }
+//     },
+//     "phone": "1-770-736-8031 x56442",
+//     "website": "hildegard.org",
+//     "company": {
+//       "name": "Romaguera-Crona",
+//       "catchPhrase": "Multi-layered client-server neural-net",
+//       "bs": "harness real-time e-markets"
+//     }
+//   },{...},{...}
+// ]
