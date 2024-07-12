@@ -5,9 +5,10 @@
 }
 
 
+
 .content {
   max-width: 80%;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 
