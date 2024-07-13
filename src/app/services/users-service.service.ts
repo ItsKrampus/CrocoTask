@@ -15,7 +15,5 @@ export class UsersServiceService {
     return this.http.get(`${environment.BASE_URL}/users`)
   }
 
-  getPosts(){
-    return this.http.get(`${environment.BASE_URL}/posts`)
-  }
+
 }

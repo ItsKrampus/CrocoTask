@@ -1,0 +1,10 @@
+@for (post of posts; track post.id ; ) {
+<div class="post-card">
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.body }}</p>
+  
+  <label for={{post.id}}><input type="checkbox" id={{post.id}} name={{post.id}}>  დეტალურად</label>
+  
+
+</div>
+}

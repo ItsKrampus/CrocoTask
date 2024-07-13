@@ -1,8 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
-:root{
-    color-scheme: dark light;
+:root {
+  color-scheme: dark light;
+
+  --color-text: white;
+  --color-alt: black;
+
+  --color-primary-300: hsl(139, 72%, 40%);
+
+  --color-accent-300: hsl(198, 100%, 50%);
+
+  --color-bg-100: hsl(120, 9%, 66%);
+  --color-bg-300: hsl(125, 10%, 26%);
+  --color-bg-400: hsl(125, 10%, 20%);
+  --color-bg-600: hsl(0, 0%, 12%);
+  --color-bg-800: hsl(0, 0%, 0%);
+
+  --padding-xs: 0.2rem;
+  --padding-s: 0.4rem;
+  --padding-m: 0.8rem;
+  --padding-l: 1.2rem;
+  --padding-xl: 2.4rem;
+
+  --border-radius-s: 8px;
+  --border-radius-m: 12px;
+  --border-radius-l: 24px;
+  --border-radius-r: 50%;
 }
 
-body{
-    margin:0;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary-300: hsl(139, 72%, 40%);
+
+    --color-accent-300: hsl(198, 100%, 50%);
+
+    --color-bg-100: hsl(120, 9%, 33%);
+    --color-bg-300: hsl(125, 10%, 12%);
+  }
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
 }

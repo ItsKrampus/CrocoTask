@@ -1,1 +1,3 @@
-<p>posts-list works!</p>
+@for (post of posts; track post.id ; ) {
+    <app-post-item [postData]="post"></app-post-item>    
+}

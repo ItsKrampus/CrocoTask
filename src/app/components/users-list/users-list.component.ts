@@ -20,7 +20,7 @@ export class UsersListComponent implements OnInit {
       let fullname = user.name.split(' ');
       // assing the user data accordingly to dto
       const userDto: UserDto = {
-        id:user.id,
+        id: user.id,
         firstName: fullname[0],
         lastName: fullname[1],
         phoneNumber: user.phone,
@@ -33,13 +33,12 @@ export class UsersListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.usersService.getUsers().subscribe({
-      next: (data:any) => {
-        this.users = this.handleApiResponse(data); 
+      next: (data: any) => {
+        this.users = this.handleApiResponse(data);
       },
-      error: (error) => console.error('Error fetching users:', error)
+      error: (error) => console.error('Error fetching users:', error),
     });
   }
-
 
   private usersService = inject(UsersServiceService);
 }
@@ -61,36 +60,10 @@ interface UserApi {
 }
 
 export interface UserDto {
-  id:number;
+  id: number;
   firstName: string;
   lastName: string;
   phoneNumber: string;
   companyName: string;
   email: string;
 }
-
-// [
-//   {
-//     "id": 1,
-//     "name": "Leanne Graham",
-//     "username": "Bret",
-//     "email": "Sincere@april.biz",
-//     "address": {
-//       "street": "Kulas Light",
-//       "suite": "Apt. 556",
-//       "city": "Gwenborough",
-//       "zipcode": "92998-3874",
-//       "geo": {
-//         "lat": "-37.3159",
-//         "lng": "81.1496"
-//       }
-//     },
-//     "phone": "1-770-736-8031 x56442",
-//     "website": "hildegard.org",
-//     "company": {
-//       "name": "Romaguera-Crona",
-//       "catchPhrase": "Multi-layered client-server neural-net",
-//       "bs": "harness real-time e-markets"
-//     }
-//   },{...},{...}
-// ]

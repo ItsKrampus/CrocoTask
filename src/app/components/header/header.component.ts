@@ -6,8 +6,14 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  public timestamp:any;
+  public timestamp: any;
+
+  constructor() {
+    const current = new Date();
+
+     this.timestamp = current.toLocaleString('en-GB');
+  }
 }

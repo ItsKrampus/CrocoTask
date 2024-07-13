@@ -1,25 +1,8 @@
-<!-- <div class="card-container">
-  <div class="user-card">
-    <div class="info-wrapper">
-      <div class="user-info name">{{ usersData.name }}</div>
-      <div class="user-info">Phone: {{ usersData.phone }}</div>
-      <div class="user-info">Mail: {{ usersData.email }}</div>
-      <div class="user-info">Company: {{ usersData.company.name }}</div>
-    </div>
-    <div class="action">
-      <button class="posts">View Posts</button>
-    </div>
-  </div>
-</div> -->
-  <tr>
-    <td>{{ usersData.firstName }}</td>
-    <td>{{ usersData.lastName }}</td>
-    <td>{{ usersData.phoneNumber }}</td>
-    <td>{{ usersData.email }}</td>
-    <td>{{ usersData.companyName }}</td>
-    <button> view posts</button>
-    </tr>  
-
-
-
-
+<tr>
+  <td>{{ usersData.firstName }}</td>
+  <td>{{ usersData.lastName }}</td>
+  <td>{{ usersData.phoneNumber }}</td>
+  <td>{{ usersData.email }}</td>
+  <td>{{ usersData.companyName }}</td>
+  <button routerLink="/user-posts/{{usersData.id}}">posts</button>
+</tr>
