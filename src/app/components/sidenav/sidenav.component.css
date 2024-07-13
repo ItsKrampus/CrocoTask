@@ -19,7 +19,7 @@ aside{
     align-items: center;
     text-decoration: none;
     color: inherit;
-    gap: .2rem; 
+    gap: .6rem; 
     user-select: none;
     -webkit-user-select: none;
 }

@@ -1,0 +1,12 @@
+.links-wrapper{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.links a{
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    color: inherit;
+    cursor: default;
+}

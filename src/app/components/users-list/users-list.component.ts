@@ -1,7 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { UsersServiceService } from '../../services/users-service.service';
-import { map } from 'rxjs';
-import { log } from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
 import { UsersItemComponent } from './users-item/users-item.component';
 
 @Component({
@@ -36,8 +34,7 @@ export class UsersListComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getUsers().subscribe({
       next: (data:any) => {
-        this.users = this.handleApiResponse(data); // Assign refined data to users
-        console.log('Users:', this.users); // Optionally log the users data
+        this.users = this.handleApiResponse(data); 
       },
       error: (error) => console.error('Error fetching users:', error)
     });
